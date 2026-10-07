@@ -1,0 +1,39 @@
+/* Form controls follow the app's light/dark toggle, not the computer's setting */
+.app { color-scheme: light; }
+.app.dark { color-scheme: dark; }
+
+/* Readable text inside buttons and fields in both modes */
+.btn,
+.icon-btn {
+  color: var(--ink);
+}
+
+.app input,
+.app select,
+.app textarea {
+  color: var(--ink);
+}
+
+.app ::placeholder {
+  color: var(--muted);
+  opacity: 0.85;
+}
+
+.app option {
+  background: var(--surface);
+  color: var(--ink);
+}
+
+/* Validation messages */
+.err {
+  display: block;
+  margin-top: 2px;
+  color: color-mix(in srgb, var(--rejected) 75%, var(--ink));
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.field.bad input,
+.field.bad select {
+  border-color: var(--rejected);
+}

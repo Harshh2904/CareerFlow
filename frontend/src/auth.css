@@ -1,0 +1,250 @@
+.boot {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.auth {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.auth-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+  padding: clamp(28px, 5vw, 56px);
+  background: var(--brand-deep);
+  color: #ffffff;
+}
+
+.auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.auth-side h1 {
+  max-width: 14ch;
+  font-size: clamp(34px, 4.6vw, 58px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.auth-side ul {
+  display: grid;
+  gap: 10px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.auth-side li::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: var(--pop);
+}
+
+.auth-side small {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.auth-main {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 32px 20px;
+}
+
+.auth-theme {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+}
+
+.auth-card {
+  width: min(420px, 100%);
+}
+
+.auth-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin-bottom: 26px;
+  padding: 4px;
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+}
+
+.auth-tabs button {
+  padding: 9px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.auth-tabs button.on {
+  background: var(--brand);
+  color: var(--brand-ink);
+}
+
+.auth-card h2 {
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.auth-sub {
+  margin: 4px 0 18px;
+  color: var(--muted);
+}
+
+.auth-err {
+  margin-bottom: 14px;
+  padding: 11px 14px;
+  border: 2px solid var(--rejected);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--rejected) 12%, var(--surface));
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.auth-show {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  color: var(--muted);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.auth-submit {
+  width: 100%;
+}
+
+.auth-switch {
+  margin: 18px 0 0;
+  color: var(--muted);
+  text-align: center;
+}
+
+.auth-switch button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--brand);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* Reminder banner */
+.reminder {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 18px;
+  padding: 14px 18px;
+  border-radius: 20px;
+  background: var(--pop);
+  color: #1b1340;
+  box-shadow: 0 4px 0 var(--brand-deep);
+}
+
+.reminder .btn {
+  color: #1b1340;
+  border-color: rgba(27, 19, 64, 0.35);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.rem-icon {
+  flex: none;
+  padding-top: 2px;
+}
+
+.rem-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.rem-body ul {
+  margin: 4px 0 8px;
+  padding-left: 18px;
+}
+
+.rem-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Signed-in user in the top bar */
+.user-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 14px 4px 4px;
+  border: 2px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  font-weight: 700;
+}
+
+.user-av {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--brand);
+  color: var(--brand-ink);
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 800;
+}
+
+@media (max-width: 860px) {
+  .auth {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-side {
+    gap: 14px;
+    padding: 22px 20px;
+  }
+
+  .auth-side h1 {
+    max-width: none;
+    font-size: 30px;
+  }
+
+  .auth-side ul,
+  .auth-side small {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .user-name {
+    display: none;
+  }
+
+  .user-chip {
+    padding: 4px;
+  }
+}

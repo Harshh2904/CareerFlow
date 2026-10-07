@@ -1,0 +1,154 @@
+/* On-screen resume preview: plain, ATS-friendly */
+.app .resume {
+  padding: 36px 40px;
+  border-radius: 4px;
+  background: #ffffff;
+  color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.app .resume header {
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+.app .resume h2 {
+  margin: 0;
+  color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.app .resume .rs-head {
+  margin: 3px 0 0;
+  color: #000000;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.app .resume .rs-contact {
+  margin: 4px 0 0;
+  color: #222222;
+  font-size: 11.5px;
+}
+
+.app .resume h3 {
+  margin: 16px 0 6px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #000000;
+  color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.app .resume p {
+  margin: 3px 0 0;
+  white-space: pre-line;
+}
+
+.app .resume .rs-item {
+  margin-top: 9px;
+}
+
+.app .resume .rs-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12.5px;
+}
+
+.app .resume .rs-row span:last-child {
+  flex: none;
+  color: #222222;
+}
+
+.app .resume .rs-list {
+  margin: 3px 0 0;
+  padding-left: 18px;
+}
+
+.app .resume .rs-list li {
+  margin: 1px 0;
+}
+
+/* Print: only the resume, full A4 page */
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+  }
+
+  .topbar,
+  .footer,
+  .tabbar,
+  .notice,
+  .scrim,
+  .no-print {
+    display: none !important;
+  }
+
+  body * {
+    visibility: visible !important;
+  }
+
+  .app,
+  .page {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+  }
+
+  .pf-wrap {
+    display: block !important;
+  }
+
+  .app .resume {
+    position: static !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 16mm 18mm !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    font-size: 11pt;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  .app .resume h2 {
+    font-size: 22pt;
+  }
+
+  .app .resume .rs-head {
+    font-size: 12pt;
+  }
+
+  .app .resume .rs-contact {
+    font-size: 10.5pt;
+  }
+
+  .app .resume h3 {
+    font-size: 11pt;
+  }
+
+  .app .resume .rs-row {
+    font-size: 11.5pt;
+  }
+
+  .app .resume .rs-item {
+    break-inside: avoid;
+  }
+}
