@@ -2,57 +2,295 @@
 
 
 
-> A modern full-stack job application tracker designed to help candidates organize, monitor, and manage their job search from one workspace.
+> A full-stack career management workspace that helps job seekers track applications, understand their search performance, prepare for interviews, build career habits, and keep their professional profile organized in one place.
 
 
 
-\## Overview
+\## Why CareerFlow?
 
 
 
-CareerFlow helps users keep track of their job applications without relying on spreadsheets or scattered notes.
+Most job trackers stop at:
 
 
 
-Users can record application details, monitor application status, save job posting links, add interview dates, store notes, search applications, and update or remove existing records.
+\*\*Applied → Interview → Offer → Rejected\*\*
 
 
 
-\## Features
+CareerFlow goes further.
 
 
 
-\* Add and manage job applications
-
-\* Track application status
-
-\* Store company, role, location, and application date
-
-\* Save job posting links
-
-\* Record interview dates
-
-\* Add personal notes for each application
-
-\* Search applications by company, role, or location
-
-\* Filter applications by status
-
-\* Edit existing applications
-
-\* Delete applications
-
-\* Dashboard with application statistics
-
-\* Responsive interface for desktop, tablet, and mobile
-
-\* Light and dark mode
-
-\* Persistent application data using MongoDB
+It combines application tracking with analytics, interview preparation, job-description matching, reminders, daily career missions, skill development, goals, and resume building.
 
 
 
-\## Tech Stack
+The goal is to turn a scattered job search into a structured career workflow.
+
+
+
+\## Core Features
+
+
+
+\### Application Management
+
+
+
+\* Create, edit, search, filter, and delete job applications
+
+\* Track company, role, application date, status, location, job link, notes, and interview date
+
+\* Move applications through \*\*Applied → Interview → Offer → Rejected\*\*
+
+\* Visual pipeline/board for tracking application progress
+
+\* Quick status updates directly from the board
+
+
+
+\### Dashboard \& Analytics
+
+
+
+\* Personalized dashboard with application totals and active opportunities
+
+\* Upcoming interview view
+
+\* Follow-up detection for applications waiting more than a week
+
+\* Recent application activity
+
+\* Application funnel showing movement from applications to interviews and offers
+
+\* Interview and offer conversion percentages
+
+\* Monthly application activity
+
+\* Location-based application insights
+
+
+
+\### Job Match
+
+
+
+CareerFlow includes a rule-based job-description matching tool.
+
+
+
+Paste a job description and CareerFlow:
+
+
+
+\* extracts frequent relevant keywords
+
+\* compares them with the user's profile, skills, summary, and experience
+
+\* calculates a match percentage
+
+\* separates matched and missing keywords
+
+\* provides a simple recommendation such as strong, decent, or weak match
+
+
+
+This helps users identify skill gaps before applying.
+
+
+
+\### Interview Prep Room
+
+
+
+Each active application can have its own preparation workspace.
+
+
+
+It includes:
+
+
+
+\* live interview countdown
+
+\* preparation checklist
+
+\* common interview practice questions
+
+\* expandable answer tips
+
+\* STAR story builder
+
+\* saved interview preparation data for individual applications
+
+
+
+The STAR builder lets users prepare structured examples using:
+
+
+
+\*\*Situation → Task → Action → Result\*\*
+
+
+
+\### Daily Missions \& Streaks
+
+
+
+CareerFlow adds a habit-building layer to the job search.
+
+
+
+Daily missions can include:
+
+
+
+\* applying to roles
+
+\* following up with companies
+
+\* networking
+
+\* spending time learning
+
+
+
+Completed missions contribute to a daily streak, turning the job search into a consistent routine rather than occasional bursts.
+
+
+
+\### Growth Tracker
+
+
+
+Users can track:
+
+
+
+\* skills they are developing
+
+\* personal skill levels
+
+\* practice hours
+
+\* career goals
+
+\* target dates
+
+\* completed goals
+
+\* application activity over time
+
+
+
+This connects job applications with actual skill development.
+
+
+
+\### Profile \& Resume Builder
+
+
+
+Users can build and maintain a professional profile containing:
+
+
+
+\* name and headline
+
+\* contact information
+
+\* location
+
+\* professional summary
+
+\* skills
+
+\* work experience
+
+\* education
+
+
+
+The profile also calculates a simple \*\*profile strength score\*\* and provides a print-ready resume view that can be saved as PDF from the browser.
+
+
+
+\### Interview Reminders
+
+
+
+CareerFlow detects interviews scheduled for today or tomorrow and provides in-app reminders.
+
+
+
+With browser notification permission enabled, it can also send an interview reminder notification.
+
+
+
+\## Authentication \& Data Protection
+
+
+
+CareerFlow includes a user account system with:
+
+
+
+\* registration and login
+
+\* password hashing using bcrypt
+
+\* JWT-based authentication
+
+\* authenticated application APIs
+
+\* user-specific application ownership
+
+\* authenticated profile/career data synchronization
+
+\* login attempt throttling
+
+\* input validation for email, password, application dates, statuses, and interview dates
+
+
+
+Application records are associated with the authenticated user so different users can maintain separate application data.
+
+
+
+\## Data Sync
+
+
+
+CareerFlow uses a hybrid client/server data model.
+
+
+
+Career development data such as:
+
+
+
+\* profile
+
+\* preparation notes
+
+\* missions
+
+\* skills
+
+\* goals
+
+
+
+is maintained locally for a responsive experience and synchronized with the backend for persistence.
+
+
+
+Application records are stored in MongoDB through the Express API.
+
+
+
+\## Technology Stack
 
 
 
@@ -60,13 +298,17 @@ Users can record application details, monitor application status, save job posti
 
 
 
-\* React
+\* React 19
 
 \* Vite
 
 \* JavaScript
 
 \* CSS
+
+\* Responsive UI
+
+\* Browser APIs for notifications and printing
 
 
 
@@ -82,7 +324,139 @@ Users can record application details, monitor application status, save job posti
 
 \* Mongoose
 
+\* JWT
+
+\* bcryptjs
+
 \* CORS
+
+
+
+\### Database
+
+
+
+\* MongoDB
+
+
+
+\## Application Architecture
+
+
+
+```text
+
+&#x20;                  CareerFlow
+
+&#x20;                      │
+
+&#x20;           ┌──────────┴──────────┐
+
+&#x20;           │                     │
+
+&#x20;      React Frontend         Express API
+
+&#x20;           │                     │
+
+&#x20;           │               JWT Authentication
+
+&#x20;           │                     │
+
+&#x20;           │                 Mongoose
+
+&#x20;           │                     │
+
+&#x20;           └────────────── MongoDB
+
+```
+
+
+
+The frontend communicates with the Express REST API for authenticated application management and synchronized user data.
+
+
+
+\## Main Workspace
+
+
+
+CareerFlow is organized into focused sections:
+
+
+
+```text
+
+Home
+
+Dashboard
+
+Applications
+
+Board
+
+Insights
+
+────────────────
+
+Funnel
+
+Match
+
+Prep Room
+
+Missions
+
+Growth
+
+Profile \& Resume
+
+```
+
+
+
+Each section solves a different part of the job-search workflow instead of putting everything into one dashboard.
+
+
+
+\## API
+
+
+
+\### Authentication
+
+
+
+```text
+
+POST /auth/register
+
+POST /auth/login
+
+GET  /auth/me
+
+GET  /auth/data
+
+PUT  /auth/data
+
+```
+
+
+
+\### Applications
+
+
+
+```text
+
+GET    /applications
+
+POST   /applications
+
+PUT    /applications/:id
+
+DELETE /applications/:id
+
+```
 
 
 
@@ -112,17 +486,49 @@ CareerFlow/
 
 │   ├── src/
 
+│   │   ├── pages/
+
+│   │   │   ├── Applications.jsx
+
+│   │   │   ├── Auth.jsx
+
+│   │   │   ├── Board.jsx
+
+│   │   │   ├── Dashboard.jsx
+
+│   │   │   ├── Funnel.jsx
+
+│   │   │   ├── Growth.jsx
+
+│   │   │   ├── Home.jsx
+
+│   │   │   ├── Insights.jsx
+
+│   │   │   ├── Match.jsx
+
+│   │   │   ├── Missions.jsx
+
+│   │   │   ├── Prep.jsx
+
+│   │   │   └── Profile.jsx
+
 │   │   ├── App.jsx
 
-│   │   ├── App.css
+│   │   ├── components.jsx
 
-│   │   ├── main.jsx
+│   │   ├── Drawer.jsx
+
+│   │   ├── Reminders.jsx
+
+│   │   ├── api.js
+
+│   │   ├── storage.js
 
 │   │   └── ...
 
-│   ├── package.json
+│   │
 
-│   └── vite.config.js
+│   └── package.json
 
 │
 
@@ -134,43 +540,23 @@ CareerFlow/
 
 
 
-\## How It Works
-
-
-
-```text
-
-User
-
-&#x20; ↓
-
-React Frontend
-
-&#x20; ↓
-
-Express REST API
-
-&#x20; ↓
-
-Mongoose
-
-&#x20; ↓
-
-MongoDB
-
-```
-
-
-
-The frontend communicates with the Express backend through REST API endpoints, while MongoDB stores application data persistently.
-
-
-
 \## Getting Started
 
 
 
-\### 1. Clone the repository
+\### Prerequisites
+
+
+
+\* Node.js
+
+\* npm
+
+\* MongoDB
+
+
+
+\### Clone
 
 
 
@@ -184,7 +570,15 @@ cd CareerFlow
 
 
 
-\### 2. Start the backend
+\### Start MongoDB
+
+
+
+Make sure your local MongoDB server is running.
+
+
+
+\### Start the backend
 
 
 
@@ -200,7 +594,7 @@ node server.js
 
 
 
-The backend runs on:
+Backend:
 
 
 
@@ -212,7 +606,7 @@ http://localhost:5000
 
 
 
-\### 3. Start the frontend
+\### Start the frontend
 
 
 
@@ -232,7 +626,7 @@ npm run dev
 
 
 
-The frontend runs on:
+Frontend:
 
 
 
@@ -244,63 +638,117 @@ http://localhost:5173
 
 
 
-\### 4. MongoDB
+\## What Makes CareerFlow Different?
 
 
 
-The backend expects a local MongoDB server using:
+CareerFlow is designed as a \*\*career operating workspace\*\*, rather than only an application database.
+
+
+
+Its workflow connects:
 
 
 
 ```text
 
-mongodb://127.0.0.1:27017/jobTracker
+Find opportunity
+
+&#x20;     ↓
+
+Track application
+
+&#x20;     ↓
+
+Monitor pipeline
+
+&#x20;     ↓
+
+Analyze conversion
+
+&#x20;     ↓
+
+Match skills with job requirements
+
+&#x20;     ↓
+
+Prepare for interview
+
+&#x20;     ↓
+
+Build STAR stories
+
+&#x20;     ↓
+
+Improve skills
+
+&#x20;     ↓
+
+Set career goals
+
+&#x20;     ↓
+
+Repeat with better strategy
 
 ```
 
 
 
-Make sure MongoDB is running before starting the backend.
+The key idea is to connect \*\*application tracking + preparation + learning + progress measurement\*\* inside one product.
 
 
 
-\## API Endpoints
+\## Current Status
 
 
 
-| Method | Endpoint            | Purpose               |
-
-| ------ | ------------------- | --------------------- |
-
-| GET    | `/applications`     | Fetch applications    |
-
-| POST   | `/applications`     | Add an application    |
-
-| PUT    | `/applications/:id` | Update an application |
-
-| DELETE | `/applications/:id` | Delete an application |
+CareerFlow is currently an active full-stack development project.
 
 
 
-\## Future Improvements
+The application is configured for local development with:
 
 
 
-\* Authentication and user accounts
+\* a local Express backend
 
-\* Resume version tracking
+\* a local MongoDB database
 
-\* Job-description skill matching
+\* a Vite development frontend
 
-\* Application readiness scoring
 
-\* Interview preparation tools
 
-\* Email reminders
+Production deployment configuration is planned separately.
 
-\* Analytics and application insights
 
-\* Cloud deployment
+
+\## Future Roadmap
+
+
+
+Planned improvements include:
+
+
+
+\* cloud deployment
+
+\* production environment configuration
+
+\* MongoDB Atlas integration
+
+\* stronger job-description analysis
+
+\* personalized application recommendations
+
+\* richer analytics
+
+\* calendar integration
+
+\* email follow-up reminders
+
+\* resume versions linked to individual applications
+
+\* application outcome learning and strategy insights
 
 
 
@@ -318,15 +766,15 @@ Aspiring Full-Stack Developer
 
 
 
-GitHub: \[@Harshh2904](https://github.com/Harshh2904)
+GitHub: https://github.com/Harshh2904
 
 
 
-\---
+\## License
 
 
 
-Built as a full-stack project to make job searching more organized, measurable, and manageable.
+This project is currently intended as a personal portfolio and development project.
 
 
 
