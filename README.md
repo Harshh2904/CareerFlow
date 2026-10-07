@@ -6,6 +6,14 @@
 
 
 
+\## Preview
+
+
+
+!\[CareerFlow Dashboard](screenshots/careerflow-dashboard.png.png)
+
+
+
 \## Why CareerFlow?
 
 
