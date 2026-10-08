@@ -9,9 +9,7 @@
 \## Preview
 
 
-
-![CareerFlow Dashboard](https://raw.githubusercontent.com/Harshh2904/CareerFlow/main/screenshots/careerflow-dashboard.png.png)
-
+![CareerFlow Home](https://raw.githubusercontent.com/Harshh2904/CareerFlow/main/screenshots/careerflow-home.png)
 
 \## Why CareerFlow?
 
